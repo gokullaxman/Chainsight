@@ -1,20 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
 
 :root {
-  --bg-base: #0e0f11;
-  --bg-surface: #16181c;
-  --bg-raised: #1e2026;
-  --bg-hover: #252830;
-  --border-subtle: #2a2d35;
-  --border-mid: #383c47;
-  --text-primary: #e8eaed;
-  --text-secondary: #8b8fa8;
-  --text-tertiary: #4e5263;
-  --accent-teal: #1d9e75;
-  --accent-amber: #ba7517;
-  --accent-red: #e24b4a;
-  --accent-purple: #7f77dd;
-  --accent-blue: #378add;
+  --bg-base: #0D1117;
+  --bg-surface: #161B22;
+  --bg-raised: #21262D;
+  --bg-hover: #30363D;
+  --border-subtle: #30363D;
+  --border-mid: #484F58;
+  --text-primary: #C9D1D9;
+  --text-secondary: #8B949E;
+  --text-tertiary: #6E7681;
+  --accent-teal: #1D9E75;
+  --accent-amber: #BA7517;
+  --accent-red: #E24B4A;
+  --accent-blue: #3B82F6;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,8 +36,6 @@ body {
 
 /* --- Graph Background --- */
 .canvas-bg {
-  background: radial-gradient(circle at center, var(--bg-raised) 1px, transparent 1px);
-  background-size: 22px 22px;
   background-color: var(--bg-base);
 }
 
@@ -79,7 +76,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 input[type="range"]:focus::-webkit-slider-thumb, 
 input[type="range"]::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 0 3px rgba(226, 75, 74, 0.2);
+  background: var(--accent-blue);
 }
 
 /* --- Ripple Row Animation --- */

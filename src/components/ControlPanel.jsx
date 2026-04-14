@@ -24,8 +24,8 @@ const DEFAULT_SEVERITY  = 0.75;
 const DEFAULT_START_DAY = 1;
 
 const RX_ICONS = Object.freeze({
-  [PRESCRIPTION_TYPE.ALT_SUPPLIER]:     '🔄',
-  [PRESCRIPTION_TYPE.INVENTORY_BUFFER]: '📦',
+  [PRESCRIPTION_TYPE.ALT_SUPPLIER]:     '',
+  [PRESCRIPTION_TYPE.INVENTORY_BUFFER]: '',
 });
 
 const SCORE_DETAIL_KEYS = Object.freeze([
@@ -33,10 +33,10 @@ const SCORE_DETAIL_KEYS = Object.freeze([
 ]);
 
 // --- SUB-COMPONENTS ----------------------------------------------------------
-function SectionLabel({ icon, text, color = 'text-cs-text' }) {
+function SectionLabel({ text, color = 'text-cs-text' }) {
   return (
-    <h2 className={`text-xs font-semibold ${color} mb-3 flex items-center gap-2`}>
-      <span>{icon}</span><span>{text}</span>
+    <h2 className={`text-xs font-semibold ${color} mb-3`}>
+      {text}
     </h2>
   );
 }
@@ -86,8 +86,8 @@ export default function ControlPanel() {
     <div className="flex flex-col gap-3 h-full">
 
       {/* ── Disruption Form ──────────────────────────────────────────────── */}
-      <section className="glass-panel p-4">
-        <SectionLabel icon="⚡" text="Inject Disruption" color="text-cs-red" />
+      <section className="mb-8">
+        <SectionLabel text="Test an issue" color="text-cs-red" />
 
         {/* Node picker */}
         <label className="block mb-3">
@@ -177,7 +177,7 @@ export default function ControlPanel() {
               bg-cs-red hover:bg-red-500 text-white
               disabled:opacity-35 disabled:cursor-not-allowed"
           >
-            ⚡ Trigger
+            Trigger
           </button>
           <button
             id="btn-reset-graph"
@@ -185,14 +185,14 @@ export default function ControlPanel() {
             className="flex-1 text-xs font-semibold rounded-lg px-4 py-2.5 transition-all
               bg-cs-border hover:bg-cs-panel text-cs-muted hover:text-cs-text"
           >
-            ↺ Reset
+            Reset
           </button>
         </div>
       </section>
 
       {/* ── Error display ────────────────────────────────────────────────── */}
       {error && (
-        <div className="glass-panel p-3 border border-cs-red/40 bg-red-950/20 text-[10px] font-mono">
+        <div className="mb-8 text-[10px] font-mono text-cs-red">
           <div className="text-cs-red font-semibold mb-1">⚠ Engine Error</div>
           <div className="text-red-400 break-all leading-relaxed">{error}</div>
         </div>
@@ -200,8 +200,8 @@ export default function ControlPanel() {
 
       {/* ── Ripple Summary ───────────────────────────────────────────────── */}
       {rippleResult && (
-        <section className="glass-panel p-4">
-          <SectionLabel icon="🌊" text="Ripple Impact" color="text-cs-amber" />
+        <section className="mb-8">
+          <SectionLabel text="Impact summary" color="text-cs-amber" />
           {rippleResult.partial_result && (
             <span className="text-[9px] text-cs-red font-mono bg-red-950/40 px-1.5 py-0.5 rounded mb-2 inline-block">
               PARTIAL — MAX_HOPS reached
@@ -227,21 +227,21 @@ export default function ControlPanel() {
 
       {/* ── Prescriptions ────────────────────────────────────────────────── */}
       {prescriptions && (
-        <section className="glass-panel p-4">
-          <SectionLabel icon="💊" text="Top 2 Prescriptions" color="text-cs-teal" />
+        <section className="mb-8">
+          <SectionLabel text="Suggested actions" color="text-cs-teal" />
           <div className="space-y-2">
             {prescriptions.map((rx, i) => (
               <div
                 key={rx.type}
-                className={`rounded-lg p-3 border transition-all ${
+                className={`py-3 transition-all ${
                   i === 0
-                    ? 'bg-cs-teal/8 border-cs-teal/30'
-                    : 'bg-cs-bg border-cs-border/60'
+                    ? 'border-l-2 border-cs-teal pl-3 -ml-3'
+                    : ''
                 }`}
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-[11px] font-bold text-cs-text">
-                    {RX_ICONS[rx.type]} #{rx.rank} {rx.type.replace(/_/g, ' ')}
+                    #{rx.rank} {rx.type.replace(/_/g, ' ')}
                   </span>
                   <span className="text-[10px] font-mono text-cs-teal">
                     {rx.score.toFixed(4)}

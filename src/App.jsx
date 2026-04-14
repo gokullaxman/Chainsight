@@ -17,7 +17,7 @@ import ControlPanel      from './components/ControlPanel';
 const APP_NAME    = 'ChainSight';
 const APP_VERSION = '0.1.0 MVP';
 const GRAPH_META  = '15 nodes · seed-42 · synthetic';
-const PANEL_W     = 320;
+const PANEL_W     = 360;
 
 // --- COMPONENT ---------------------------------------------------------------
 export default function App() {
@@ -29,13 +29,12 @@ export default function App() {
         <header className="flex-shrink-0 border-b border-cs-border px-5 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             {/* Logo mark */}
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cs-teal/30 to-cs-purple/20
-                            border border-cs-teal/40 flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-cs-blue/10 border border-cs-blue/20 flex items-center justify-center flex-shrink-0">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 <circle cx="8"  cy="2.5" r="1.8" fill="#1D9E75" />
                 <circle cx="3"  cy="9"   r="1.8" fill="#1D9E75" />
                 <circle cx="13" cy="9"   r="1.8" fill="#BA7517" />
-                <circle cx="8"  cy="14"  r="1.8" fill="#534AB7" />
+                <circle cx="8"  cy="14"  r="1.8" fill="#3B82F6" />
                 <line x1="8"  y1="4.3"  x2="3"  y2="7.2"  stroke="#1E3A5F" strokeWidth="1.2" />
                 <line x1="8"  y1="4.3"  x2="13" y2="7.2"  stroke="#1E3A5F" strokeWidth="1.2" />
                 <line x1="3"  y1="10.8" x2="8"  y2="12.2" stroke="#1E3A5F" strokeWidth="1.2" />
@@ -48,7 +47,7 @@ export default function App() {
                 {APP_NAME}
               </h1>
               <p className="text-[10px] text-cs-muted leading-none mt-0.5">
-                Supply Chain Visibility — {APP_VERSION}
+                Supply Chain Map — {APP_VERSION}
               </p>
             </div>
           </div>
@@ -56,7 +55,7 @@ export default function App() {
           {/* Status bar */}
           <div className="flex items-center gap-4 text-[10px] text-cs-muted font-mono">
             <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-cs-teal animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-cs-teal" />
               LIVE
             </span>
             <span className="text-cs-border">|</span>
@@ -76,7 +75,7 @@ export default function App() {
 
           {/* Control + output panel — fixed width */}
           <aside
-            className="flex-shrink-0 overflow-y-auto bg-cs-surface p-3"
+            className="flex-shrink-0 overflow-y-auto bg-cs-bg p-5"
             style={{ width: `${PANEL_W}px` }}
           >
             <ControlPanel />

@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
     <!-- Tailwind CSS CDN (MVP development only) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -19,16 +19,16 @@
               'cs-teal':    '#1D9E75',
               'cs-amber':   '#BA7517',
               'cs-red':     '#E24B4A',
-              'cs-purple':  '#534AB7',
-              'cs-bg':      '#0A0F1E',
-              'cs-surface': '#111827',
-              'cs-panel':   '#1A2235',
-              'cs-border':  '#1F2D45',
-              'cs-muted':   '#94A3B8',
-              'cs-text':    '#E2E8F0',
+              'cs-blue':    '#3B82F6',
+              'cs-bg':      '#0D1117',
+              'cs-surface': '#161B22',
+              'cs-panel':   '#161B22',
+              'cs-border':  '#30363D',
+              'cs-muted':   '#8B949E',
+              'cs-text':    '#C9D1D9',
             },
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['"DM Sans"', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
             },
           },
@@ -36,7 +36,7 @@
       };
     </script>
   </head>
-  <body class="bg-cs-bg text-cs-text font-sans antialiased">
+  <body class="bg-cs-bg text-cs-text font-sans antialiased leading-relaxed">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
