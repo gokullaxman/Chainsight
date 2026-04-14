@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --bg-base: #0e0f11;
+  --bg-surface: #16181c;
+  --bg-raised: #1e2026;
+  --bg-hover: #252830;
+  --border-subtle: #2a2d35;
+  --border-mid: #383c47;
+  --text-primary: #e8eaed;
+  --text-secondary: #8b8fa8;
+  --text-tertiary: #4e5263;
+  --accent-teal: #1d9e75;
+  --accent-amber: #ba7517;
+  --accent-red: #e24b4a;
+  --accent-purple: #7f77dd;
+  --accent-blue: #378add;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; width: 100%; overflow: hidden; }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-mono { font-family: 'DM Mono', monospace; }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-mid); }
+
+/* --- Graph Background --- */
+.canvas-bg {
+  background: radial-gradient(circle at center, var(--bg-raised) 1px, transparent 1px);
+  background-size: 22px 22px;
+  background-color: var(--bg-base);
+}
+
+/* --- Form Controls --- */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%234e5263'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+select:focus { outline: none; border-color: var(--text-secondary); }
+
+/* Custom Slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-raised);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  cursor: pointer;
+  margin-top: -5px; 
+  transition: box-shadow 0.1s;
+}
+input[type="range"]:focus::-webkit-slider-thumb, 
+input[type="range"]::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 3px rgba(226, 75, 74, 0.2);
+}
+
+/* --- Ripple Row Animation --- */
+@keyframes cascade-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ripple-row {
+  opacity: 0;
+  animation: cascade-enter 0.2s ease-out forwards;
+}
+.row-highlighted {
+  background-color: var(--bg-hover) !important;
+}
+
+/* --- D3 Animations --- */
+.edge-cascade {
+  stroke-dasharray: 6 4;
+  /* stroke-dashoffset animation handled via transitions in D3 component if needed */
+}
+
+/* Pulse for bottleneck */
+@keyframes drop-ripple {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(3); opacity: 0; }
+}
+.ripple-ring::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  border: 1px solid var(--accent-red);
+  animation: drop-ripple 1.5s ease-out infinite;
+}
